@@ -25,6 +25,7 @@ obsolete_services:
   - chef-client
 
 centos_files: [
-     # { src: "CentOS-Base.repo", dest: "/etc/yum.repos.d/CentOS-Base.repo" },
+       { src: "CentOS-Base.repo", dest: "/etc/yum.repos.d/CentOS-Base.repo" },
+       { src: "epel.repo", dest: "/etc/yum.repos.d/epel.repo" }
   ]
 
