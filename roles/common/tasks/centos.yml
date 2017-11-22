@@ -3,12 +3,12 @@
 #   ignore_errors: yes
 #   tags:  [common]
 
-# - name:  Extra Packages for Enterprise Linux (or EPEL) is present
-#   yum: 
-#      name: epel-release 
-#      state: latest  
-#   ignore_errors: yes
-#   tags: [common]
+- name:  Extra Packages for Enterprise Linux (or EPEL) is present
+  yum: 
+     name: epel-release 
+     state: latest  
+  ignore_errors: yes
+  tags: [common]
 
 - name: CentOS files are copied
   copy:
