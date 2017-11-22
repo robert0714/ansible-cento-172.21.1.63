@@ -1,0 +1,90 @@
+# Variable setup.
+- name: Include OS-Specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+  tags: [sonarqube]
+
+  
+- name: Define host_ip
+  set_fact:
+    host_ip: "{{ __host_ip }}"
+  when: host_ip is not defined
+  tags: [sonarqube]
+
+- name: Sonarquebe Data dirctory are created
+  file: path=/data/sonarquebe/ state=directory mode=0755
+  ignore_errors: yes
+  tags: [sonarqube]
+
+- name: Sonarquebe compose  files are copied
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  with_items: "{{ files }}"
+  tags: [sonarqube]
+
+
+- name: Create a network
+  docker_network:
+    name: "{{ docker_network_name }}"
+  tags: [sonarqube]
+
+#- name: Containers are pulled 
+#  shell: docker-compose pull  db sonarqube
+#  args:
+#    chdir: /data/sonarquebe/
+#  tags: [sonarqube]
+
+#- name: Containers are running
+#  shell: COMPOSE_HTTP_TIMEOUT=200   docker-compose up -d   
+#  args:
+#    chdir: /data/{{ service_name }}
+#  tags: [sonarqube]
+- name: messagebus user is added to the root group
+  user:
+    name: messagebus
+    group: root
+  register: user_result
+  tags: [sonarqube]
+
+- name: sameersbn-postgresql:9.4-24
+  docker_container:   
+    privileged: yes
+    env:
+      DB_USER: sonar
+      DB_PASS: sonar 
+      DB_NAME: sonar
+    image: sameersbn/postgresql:9.4-24
+    name: postgresql
+    networks:
+      - name: "{{ docker_network_name }}"
+    ports: 
+    - "49160:22"
+    - "49161:80"
+    - "49162:5432"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /data/postgresql:/var/lib/postgresql
+  tags: [sonarqube]
+
+- name: Sonarquebe Container is running
+  docker_container:
+    privileged: yes
+    env:
+      SONARQUBE_JDBC_USERNAME: sonar
+      SONARQUBE_JDBC_PASSWORD: sonar
+      SONARQUBE_JDBC_URL:  "jdbc:postgresql://{{ host_ip }}:49162/sonar"
+    name: sonarqube
+    image: "sonarqube:{{ sonarqube_version }}"
+    networks:
+      - name: "{{ docker_network_name }}"
+    ports: 
+     - "9092:9092"
+     - "80:9000" 
+    volumes:
+      - /vagrant/.vagrant/machines:/machines
+      - /data/sonarqube/conf:/opt/sonarqube/conf
+      - /data/sonarqube/data:/opt/sonarqube/data
+      - /data/sonarqube/extensions:/opt/sonarqube/extensions
+      - /data/sonarqube/bundled-plugins:/opt/sonarqube/lib/bundled-plugins
+  register: container_result
+  tags: [sonarqube]
