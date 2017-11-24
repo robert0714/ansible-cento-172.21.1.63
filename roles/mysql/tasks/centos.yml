@@ -1,13 +1,13 @@
-- name: Add Mysql repository
-  yum: name=http://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
-  when: usePercona == 0
-  tags: [mysql]
+#- name: Add Mysql repository
+#  yum: name=http://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
+#  when: usePercona == 0
+#  tags: [mysql]
 
-- name: Add Percona Server Mysql repository
-  yum: name=http://www.percona.com/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm
-  when: usePercona == 1 
-  tags: [mysql]
-
+#- name: Add Percona Server Mysql repository
+#  yum: name=http://www.percona.com/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm
+#  when: usePercona == 1 
+#  tags: [mysql]
+ 
 - name: Install Mysql common RPM dependencies
   become: true
   yum: name={{ item }} state=present
