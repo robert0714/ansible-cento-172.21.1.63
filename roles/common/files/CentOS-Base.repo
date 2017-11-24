@@ -15,7 +15,7 @@ name=CentOS-$releasever - Base
 #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os&infra=$infra
 #baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/
 #baseurl=http://ftp.isu.edu.tw/pub/Linux/CentOS/$releasever/os/$basearch/
-baseurl=http://ftp.tc.edu.tw/Linux/CentOS/$releasever/os/x86_64/Packages/
+baseurl=http://ftp.tc.edu.tw/Linux/CentOS/$releasever/os/$basearch/
 #baseurl=http://mirror01.idc.hinet.net/EPEL/7/$basearch
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
@@ -26,7 +26,7 @@ name=CentOS-$releasever - Updates
 #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates&infra=$infra
 #baseurl=http://mirror.centos.org/centos/$releasever/updates/$basearch/
 #baseurl=http://ftp.isu.edu.tw/pub/Linux/CentOS/$releasever/os/$basearch/
-baseurl=http://ftp.tc.edu.tw/Linux/CentOS/$releasever/os/x86_64/Packages/
+baseurl=http://ftp.tc.edu.tw/Linux/CentOS/$releasever/os/$basearch/
 #baseurl=http://mirror01.idc.hinet.net/EPEL/7/$basearch
 gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
@@ -38,7 +38,7 @@ name=CentOS-$releasever - Extras
 #baseurl=http://mirror.centos.org/centos/$releasever/extras/$basearch/
 #baseurl=http://mirror01.idc.hinet.net/EPEL/7/$basearch
 #baseurl=http://ftp.isu.edu.tw/pub/Linux/CentOS/$releasever/os/$basearch/
-baseurl=http://ftp.tc.edu.tw/Linux/CentOS/$releasever/os/x86_64/Packages/
+baseurl=http://ftp.tc.edu.tw/Linux/CentOS/$releasever/os/$basearch/
 #baseurl=http://mirror01.idc.hinet.net/EPEL/7/$basearch
 
 gpgcheck=1
@@ -50,7 +50,7 @@ name=CentOS-$releasever - Plus
 #mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=centosplus&infra=$infra
 #baseurl=http://mirror.centos.org/centos/$releasever/centosplus/$basearch/
 #baseurl=http://ftp.isu.edu.tw/pub/Linux/CentOS/$releasever/os/$basearch/
-baseurl=http://ftp.tc.edu.tw/Linux/CentOS/$releasever/os/x86_64/Packages/
+baseurl=http://ftp.tc.edu.tw/Linux/CentOS/$releasever/os/$basearch/
 #baseurl=http://mirror01.idc.hinet.net/EPEL/7/$basearch
 gpgcheck=1
 enabled=0
