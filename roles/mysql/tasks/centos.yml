@@ -18,7 +18,8 @@
     - lsof
     - python-pip
     - python-virtualenv
-    - gcc
+    - MySQL-python
+    #- gcc
     # - sshpass 
   tags: [mysql]
 
@@ -45,20 +46,6 @@
   when: usePercona == 1   
   tags: [mysql]
 
-- name:  pip  install pip
-  become: true
-  pip:  
-    name: pip
-    state: latest
-  ignore_errors: yes
-  tags: [mysql]
-
-- name:  pip  install MySQL-python
-  become: true
-  pip:
-    name:  MySQL-python
-  ignore_errors: yes
-  tags: [mysql]
 
 - name: mysql service is started 
   service:
