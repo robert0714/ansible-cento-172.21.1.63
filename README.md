@@ -1,11 +1,15 @@
-#ansible-playbook  common.yml  -i hosts/all
+often command
+======
+ansible-playbook  common.yml  -i hosts/all
+
 更換yum repository
- ==============
- 記得要下yum clean all，或著照提示做rm -rf /var/cache/yum
+==============
+記得要下yum clean all，或著照提示做rm -rf /var/cache/yum
  
  
- 在使用yum時，會將下載的東西，存放在/var/cache/yum目錄下。
+在使用yum時，會將下載的東西，存放在/var/cache/yum目錄下。
 1.yum更新
+
 yum check-update
 #檢查能更新的套件有那些
 
