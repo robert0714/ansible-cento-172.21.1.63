@@ -1,4 +1,4 @@
- ansible-playbook  common.yml  -i hosts/all
+#ansible-playbook  common.yml  -i hosts/all
 更換yum repository
  ==============
  記得要下yum clean all，或著照提示做rm -rf /var/cache/yum
