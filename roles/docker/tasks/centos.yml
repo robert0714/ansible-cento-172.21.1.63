@@ -72,7 +72,8 @@
   command: systemctl daemon-reload
   when: is_systemd is defined
   tags: [docker]
-
+#usermod -G vagrant docker
+#groups vagrant
 - name: vagrant user is added to the docker group
   user:
     name: "{{ item }}"
