@@ -1,7 +1,8 @@
-- hosts: all
+#- hosts: app 
+- hosts: mongo
   remote_user: iisi.cm01
   serial: 1
   roles:
-    - common
+#    - common
     - docker
-    - docker-compose 
+#    - docker-compose 

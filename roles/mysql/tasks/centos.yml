@@ -7,7 +7,10 @@
 #  yum: name=http://www.percona.com/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm
 #  when: usePercona == 1 
 #  tags: [mysql]
- 
+- name: update repositoey info
+  shell: yum update -y
+  tags: [mysql]
+
 - name: Install Mysql common RPM dependencies
   become: true
   yum: name={{ item }} state=present
@@ -19,7 +22,7 @@
     - python-pip
     - python-virtualenv
     - MySQL-python
-    #- gcc
+#    - gcc
     # - sshpass 
   tags: [mysql]
 
@@ -46,6 +49,20 @@
   when: usePercona == 1   
   tags: [mysql]
 
+#- name:  pip  install pip
+#  become: true
+#  pip:  
+#    name: pip
+#    state: latest
+#  ignore_errors: yes
+#  tags: [mysql]
+
+#- name:  pip  install MySQL-python
+#  become: true
+#  pip:
+#    name:  MySQL-python
+#  ignore_errors: yes
+#  tags: [mysql]
 
 - name: mysql service is started 
   service:

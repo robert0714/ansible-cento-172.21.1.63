@@ -16,24 +16,24 @@
     - yum-utils
     - device-mapper-persistent-data
     - lvm2
-  tags: [docker]
+  tags: [docker]  
 
 - name: add docker ce repo
   shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
   args:
     creates: /etc/yum.repos.d/docker-ce.repo
   register: docker_yum_repo
-  tags: [docker]
-
+  tags: [docker]  
+  
 - name: make yum cache fast
   shell: yum makecache fast
   when: docker_yum_repo.changed
-  tags: [docker]
+  tags: [docker] 
 
 - name: get docker stable version number
   shell: yum list docker-ce.x86_64  --showduplicates | sort -r |grep  docker-ce-stable  |awk '{print $2}' | awk 'BEGIN{getline;print}'
-  register: docker_stable_version
-  tags: [docker]
+  register: docker_stable_version  
+  tags: [docker] 
 
 - name: CentOS docker package is installed
   yum:
@@ -42,17 +42,17 @@
   notify: restart docker
   tags: [docker]
 
-- name: python-pip is present
-  yum:
-    name: python-pip
-    state: present
-  tags: [docker]
+#- name: python-pip is present
+#  yum:
+#    name: python-pip
+#    state: present
+#  tags: [docker]
 
 #- name:  update pip
 #  become: true
-#  pip:
+#  pip:  
 #    name: pip
-#    state: latest
+#    state: latest 
 #  tags: [docker]
 
 #- name: docker-py is present
@@ -72,14 +72,13 @@
   command: systemctl daemon-reload
   when: is_systemd is defined
   tags: [docker]
-#usermod -G vagrant docker
-#groups vagrant
+
 - name: vagrant user is added to the docker group
   user:
     name: "{{ item }}"
     group: docker
     append: yes
-  with_items:
+  with_items: 
     - iisi.cm01
     - iisi.prod94
     - iisi.prod04
@@ -105,3 +104,4 @@
   when: not skip_ui is defined
   ignore_errors: yes
   tags: [docker]
+ 

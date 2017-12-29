@@ -1,7 +1,5 @@
-- hosts: mysql
+- hosts: localhost 
   remote_user: iisi.cm01
   serial: 1
   roles:
-#    - common
-    - mysql
-
+    - registry

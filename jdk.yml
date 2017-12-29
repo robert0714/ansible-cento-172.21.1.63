@@ -1,7 +1,6 @@
-- hosts: mysql
+- hosts: all 
+#- hosts: mongo
   remote_user: iisi.cm01
   serial: 1
   roles:
-#    - common
-    - mysql
-
+    - jdk 

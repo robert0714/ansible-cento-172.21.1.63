@@ -1,9 +1,6 @@
-- hosts: jenkins
-  remote_user: iisi.cm01
+- hosts: jenkins 
+  remote_user: iisi.prod94
   serial: 1
   roles:
-    - common
-    - docker
-    - docker-compose
     - jenkins2-docker 
 

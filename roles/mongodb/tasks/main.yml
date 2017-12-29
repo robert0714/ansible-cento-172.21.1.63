@@ -1,16 +1,11 @@
 - name: MongoDB is running
-  docker_container:
+  docker:
     restart_policy: always
     name: mongodb
-    image: mongo:latest
+    image: mongo:3.6.0
     ports: 
     - "27017:27017"
     privileged: yes
-    env:
-#      MONGODB_USERNAME: ude
-#      MONGODB_PASSWORD: ude
-      MONGODB_DATABASE: ec
     volumes:
-      - /data/mongodb:/data/db
-  when: not skip_ui is defined
-  tags: [mongodb]
+       - /data/mongodb:/data/db
+    tags: [mongodb]

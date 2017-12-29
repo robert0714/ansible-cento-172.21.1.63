@@ -1,3 +1,0 @@
-files: [
-     { src: "docker-compose.yml", dest: "/data/sonarquebe/docker-compose.yml" },
-  ]

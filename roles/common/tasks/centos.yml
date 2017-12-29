@@ -6,9 +6,9 @@
   tags:  [common]
 
 #- name:  Extra Packages for Enterprise Linux (or EPEL) is present
-#  yum:
-#     name: epel-release
-#     state: latest
+#  yum: 
+#     name: epel-release 
+#     state: latest  
 #  ignore_errors: yes
 #  tags: [common]
 
@@ -21,8 +21,8 @@
 
 
 - name: selenix  policycoreutils
-  yum:
-    name: policycoreutils-python
+  yum: 
+    name: policycoreutils-python 
     state: present
   ignore_errors: yes
   tags: [common]
@@ -64,20 +64,20 @@
 #    name: sshd
 #    state: restarted
 #  tags: [common]
-
+  
 - name: JQ is present
-  yum:
-    name: jq
-    state: present
+  yum: 
+    name: jq 
+    state: present  
   tags: [common]
-
+  
 - name: KILLALL is present
-  yum:
-    name: psmisc
+  yum: 
+    name: psmisc 
     state: present
   ignore_errors: yes
   tags: [common]
-
+  
 - name: Host is present
   lineinfile:
     dest: /etc/hosts
@@ -85,7 +85,7 @@
     line: "{{ item.host_ip }} {{ item.host_name }}"
   with_items: "{{ hosts }}"
   tags: [common]
-
+ 
 
 - name: Services are not running
   service:
