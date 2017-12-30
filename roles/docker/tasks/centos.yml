@@ -76,7 +76,7 @@
 - name: vagrant user is added to the docker group
   user:
     name: "{{ item }}"
-    group: docker
+    groups: docker
     append: yes
   with_items: 
     - iisi.cm01
